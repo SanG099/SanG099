@@ -1,163 +1,101 @@
-# Sangam Subedi — Data Analyst Portfolio
+# 👋 Hi, I'm Sangam Subedi
 
-A sleek, modern portfolio website with dark/light theme, blinking starfield background, glassmorphism UI, and scroll animations. Built with vanilla HTML, CSS & JavaScript — zero build tools, zero dependencies to install.
+### Data Analyst · Problem Solver · Storyteller
 
-> **Live Site:** [https://sang099.github.io/Portfolio/](https://sang099.github.io/Portfolio/)
+> *Insight > Instinct* — I turn raw data into business decisions.
 
----
-
-## 🚀 Quick Start (Local)
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/SanG099/Portfolio.git
-
-# 2. Open the folder
-cd Portfolio
-
-# 3. Open in browser (pick one)
-start index.html            # Windows
-open index.html             # macOS
-xdg-open index.html         # Linux
-```
-
-Or use VS Code's **Live Server** extension for hot-reload during development.
+[![Portfolio](https://img.shields.io/badge/🌐_Portfolio-Live_Site-00e5a0?style=for-the-badge)](https://sang099.github.io/Portfolio/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/sangamsubedi)
+[![Email](https://img.shields.io/badge/Email-Contact_Me-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:subedisangam183@gmail.com)
 
 ---
 
-## 📁 Project Structure
+## 🧠 About Me
 
-```
-Portfolio/
-├── index.html              # Single-page site (all sections)
-├── css/
-│   └── style.css           # Design system, themes & responsive styles
-├── js/
-│   └── main.js             # Interactions, animations, starfield canvas
-├── assets/
-│   ├── mypicture-removebg.png  # Profile photo
-│   └── resume.pdf              # (Add your resume here)
-├── .gitignore
-└── README.md
-```
+I'm a data analyst who believes every dataset has a story — and my job is to find the chapter that changes the business. With **3+ years of experience** turning ambiguous questions into clear, data-driven answers, I specialize in **customer analytics**, **operational efficiency**, and **predictive modeling**.
+
+My approach is simple: **start with "why does this matter?"** before writing a single line of code. This ensures every analysis delivers impact, not just charts.
+
+When I'm not wrangling data, you'll find me playing chess ♟️, experimenting with film photography 📷, or trying to perfect my homemade ramen recipe 🍜.
 
 ---
 
-## 🎨 Features
+## 🛠️ Skills & Tools
 
-| Feature | Details |
-|---------|---------|
-| **Dark / Light Theme** | Toggle via navbar button; preference saved in `localStorage` |
-| **Blinking Starfield** | Canvas background with twinkling multi-colored stars & constellation lines |
-| **Mouse Interaction** | Stars connect to cursor; gentle repulsion on hover |
-| **Glassmorphism Cards** | Frosted-glass effect with `backdrop-filter: blur()` |
-| **Scroll Animations** | Intersection Observer–powered fade-in reveals |
-| **Active Nav Tracking** | Scroll spy highlights the current section in the navbar |
-| **Project Filters** | Filter gallery cards by tech stack (Python, SQL, Tableau, Power BI) |
-| **Count-Up Stats** | Animated numbers in the hero section |
-| **Responsive** | 4 breakpoints — Desktop → Tablet → Mobile → Small Mobile |
+| Category | Tools |
+|----------|-------|
+| **Languages** | Python · SQL · R |
+| **Visualization** | Tableau · Power BI · Matplotlib · ggplot2 |
+| **Data Science** | Pandas · NumPy · Scikit-learn · SciPy |
+| **Databases** | PostgreSQL · MySQL |
+| **ETL & Automation** | Airflow · Power Query · VBA |
+| **Other** | Excel (Advanced) · Streamlit · Shiny · Git |
 
 ---
 
-## 🌐 Hosting & Deployment
+## 📊 Featured Projects
 
-### Option 1: GitHub Pages (Free — Recommended)
+### 1. Customer Churn Prediction
+Built a Random Forest model that predicted at-risk customers with **91% accuracy**. **Reduced monthly churn by 18%**, saving an estimated **$240K annually**.
 
-1. **Push to GitHub** (already done if you cloned this repo):
-   ```bash
-   git add .
-   git commit -m "Deploy portfolio"
-   git push origin main
-   ```
-
-2. **Enable GitHub Pages:**
-   - Go to your repo → **Settings** → **Pages**
-   - Under **Source**, select **Branch:** `main`, **Folder:** `/ (root)`
-   - Click **Save**
-
-3. **Your site is live at:**
-   ```
-   https://sang099.github.io/Portfolio/
-   ```
-   *(Takes 1–2 minutes to deploy on first push)*
-
-> **Custom Domain (optional):** In Settings → Pages → Custom domain, enter your domain (e.g. `sangamsubedi.com`). Add a `CNAME` file to the repo root with your domain name. Configure your DNS with a CNAME record pointing to `sang099.github.io`.
+`Python` `Scikit-learn` `Pandas`
 
 ---
 
-### Option 2: Netlify (Free)
+### 2. Sales Performance Dashboard
+Designed an interactive Tableau dashboard tracking **$12M in quarterly revenue** across 8 regions. **Identified a $1.2M untapped segment** that leadership fast-tracked into Q3 strategy.
 
-1. Go to [app.netlify.com/drop](https://app.netlify.com/drop)
-2. **Drag & drop** your project folder
-3. Done — live URL generated instantly
-
-**Or via CLI:**
-```bash
-npm install -g netlify-cli
-netlify deploy --prod --dir .
-```
+`Tableau` `SQL` `Excel`
 
 ---
 
-### Option 3: Vercel (Free)
+### 3. Automated Reporting Pipeline
+Engineered an end-to-end ETL pipeline that replaced 6 manual Excel reports with automated SQL jobs. **Saved the analytics team 10+ hours per week** and eliminated data entry errors.
 
-1. Go to [vercel.com/new](https://vercel.com/new)
-2. Import your GitHub repo (`SanG099/Portfolio`)
-3. Framework Preset: **Other**
-4. Click **Deploy**
+`SQL` `Python` `Airflow`
 
 ---
 
-### Option 4: Cloudflare Pages (Free)
+### 4. HR Analytics Dashboard
+Built a Power BI dashboard tracking employee attrition, satisfaction, and performance across 1,200 staff. **Pinpointed 3 high-risk departments**, leading to targeted retention programs.
 
-1. Go to [dash.cloudflare.com](https://dash.cloudflare.com/) → **Workers & Pages** → **Create**
-2. Connect your GitHub repo
-3. Build command: *(leave blank)*
-4. Output directory: `/`
-5. Click **Deploy**
+`Power BI` `DAX` `SQL`
 
 ---
 
-## ✏️ Customization
+### 5. A/B Test Analysis Engine
+Created a reusable Python framework for running and evaluating A/B tests with Bayesian statistics. **Accelerated experiment analysis from 3 days to 15 minutes** across the product team.
 
-| What to change | Where |
-|----------------|-------|
-| Name & branding | `<title>`, nav logo in `index.html` |
-| Hero headline & stats | `#hero` section in `index.html` |
-| Profile photo | Replace `assets/mypicture-removebg.png` |
-| Projects | Edit the 6 `<article class="project-card">` blocks |
-| Case study | Replace the churn example in `#case-study` |
-| About Me bio | `#about` section in `index.html` |
-| Email & phone | Footer links in `index.html` |
-| Social links | Update GitHub / LinkedIn URLs in footer |
-| Resume | Drop your PDF into `assets/resume.pdf` |
-| Colors | Edit CSS custom properties in `:root` (`css/style.css`) |
-
-### Embed a real Tableau / Power BI dashboard:
-Replace the placeholder in the Case Study section:
-```html
-<iframe src="https://public.tableau.com/views/YOUR_DASHBOARD"
-        width="100%" height="500" frameborder="0"></iframe>
-```
+`Python` `SciPy` `Streamlit`
 
 ---
 
-## 📦 Dependencies
+### 6. Supply Chain Optimization
+Visualized logistics data for **50K+ shipments** to identify bottlenecks in the delivery pipeline. **Reduced average delivery time by 22%** and cut shipping costs by **$180K**.
 
-**Zero** build tools. All external resources loaded via CDN:
-
-| Resource | CDN |
-|----------|-----|
-| [Inter Font](https://fonts.google.com/specimen/Inter) | Google Fonts |
-| [Devicon](https://devicon.dev/) | jsDelivr |
-| [Lucide Icons](https://lucide.dev/) | unpkg |
+`Tableau` `Python` `SQL`
 
 ---
 
-## 📄 License
+## 📈 By the Numbers
 
-MIT — free to use, modify, and share.
+| Metric | Value |
+|--------|-------|
+| Projects Completed | **15+** |
+| Years of Experience | **3+** |
+| Rows Analyzed | **500K+** |
 
 ---
 
-**Built by [Sangam Subedi](https://github.com/SanG099)** with ☕ and curiosity.
+## 📬 Let's Connect
+
+I'm always open to collaborating on interesting data problems or discussing new opportunities.
+
+- 📧 **Email:** [subedisangam183@gmail.com](mailto:subedisangam183@gmail.com)
+- 📱 **Phone:** +977 9864434019
+- 💼 **LinkedIn:** [linkedin.com/in/sangamsubedi](https://linkedin.com/in/sangamsubedi)
+- 🌐 **Portfolio:** [sang099.github.io/Portfolio](https://sang099.github.io/Portfolio/)
+
+---
+
+*"Don't just show the data — tell me why it matters."*
