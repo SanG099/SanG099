@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackgroundCanvas();
   initSmoothScroll();
   initActiveNavTracking();
+  initTypingEffect();
+  initTiltCards();
+  initMagneticButtons();
+  initParallaxFloat();
+  initSectionCountReveal();
 });
 
 
@@ -485,4 +490,201 @@ function initActiveNavTracking() {
 
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   updateActiveNav(); // Run on load
+}
+
+
+/* =============================================
+   11. TYPING EFFECT — Hero Subtitle
+   ============================================= */
+function initTypingEffect() {
+  const heroTag = document.querySelector('.hero-tag');
+  if (!heroTag) return;
+
+  const originalText = heroTag.textContent;
+  heroTag.textContent = '';
+  heroTag.style.borderRight = '2px solid var(--mint)';
+  heroTag.style.display = 'inline-block';
+
+  let i = 0;
+  const speed = 40;
+
+  function type() {
+    if (i < originalText.length) {
+      heroTag.textContent += originalText.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    } else {
+      // Blink cursor then remove
+      setTimeout(() => {
+        heroTag.style.borderRight = 'none';
+      }, 1500);
+    }
+  }
+
+  // Start typing after a short delay
+  setTimeout(type, 600);
+}
+
+
+/* =============================================
+   12. TILT EFFECT — Cards on Mouse Move
+   ============================================= */
+function initTiltCards() {
+  const cards = document.querySelectorAll('.tech-card, .project-card, .float-card');
+  if (!cards.length) return;
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
+
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'transform 0.1s ease';
+    });
+  });
+}
+
+
+/* =============================================
+   13. MAGNETIC BUTTONS — Pull towards cursor
+   ============================================= */
+function initMagneticButtons() {
+  const buttons = document.querySelectorAll('.btn, .filter-btn, .theme-toggle, .nav-link--cta');
+  if (!buttons.length) return;
+
+  buttons.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+      btn.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+
+    btn.addEventListener('mouseenter', () => {
+      btn.style.transition = 'transform 0.1s ease';
+    });
+  });
+}
+
+
+/* =============================================
+   14. PARALLAX FLOAT — Hero elements on scroll
+   ============================================= */
+function initParallaxFloat() {
+  const hero = document.querySelector('.hero');
+  const floatCards = document.querySelectorAll('.float-card');
+  const heroGraphic = document.querySelector('.hero-graphic');
+  if (!hero || !floatCards.length) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const heroBottom = hero.offsetHeight;
+
+    if (scrollY < heroBottom) {
+      const progress = scrollY / heroBottom;
+
+      floatCards.forEach((card, index) => {
+        const speed = 0.3 + (index * 0.15);
+        const yOffset = scrollY * speed;
+        const rotate = progress * (index % 2 === 0 ? 3 : -3);
+        card.style.transform = `translateY(${-yOffset * 0.2}px) rotate(${rotate}deg)`;
+      });
+
+      if (heroGraphic) {
+        heroGraphic.style.transform = `translateY(${scrollY * 0.08}px)`;
+      }
+    }
+  }, { passive: true });
+}
+
+
+/* =============================================
+   15. STAGGERED CHILDREN REVEAL — Section extras
+   ============================================= */
+function initSectionCountReveal() {
+  // Animate insight metrics on scroll
+  const insightMetrics = document.querySelectorAll('.insight-metric');
+  if (insightMetrics.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const metrics = entry.target.querySelectorAll('.insight-metric');
+            metrics.forEach((metric, i) => {
+              metric.style.opacity = '0';
+              metric.style.transform = 'translateY(20px)';
+              setTimeout(() => {
+                metric.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                metric.style.opacity = '1';
+                metric.style.transform = 'translateY(0)';
+              }, i * 120);
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    const metricsContainer = document.querySelector('.insight-metrics');
+    if (metricsContainer) observer.observe(metricsContainer);
+  }
+
+  // Animate project tech tags on hover
+  document.querySelectorAll('.project-card').forEach(card => {
+    const tags = card.querySelectorAll('.project-tech-tags span');
+
+    card.addEventListener('mouseenter', () => {
+      tags.forEach((tag, i) => {
+        tag.style.transition = `all 0.3s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.06}s`;
+        tag.style.transform = 'translateY(-2px)';
+        tag.style.borderColor = 'rgba(0, 200, 83, 0.3)';
+        tag.style.color = 'var(--mint)';
+      });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      tags.forEach(tag => {
+        tag.style.transform = '';
+        tag.style.borderColor = '';
+        tag.style.color = '';
+      });
+    });
+  });
+
+  // Smooth number scramble for stat numbers
+  document.querySelectorAll('.stat-number').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      const target = parseInt(el.getAttribute('data-target'));
+      let iterations = 0;
+      const interval = setInterval(() => {
+        el.textContent = Math.floor(Math.random() * target * 1.2).toLocaleString();
+        iterations++;
+        if (iterations > 8) {
+          clearInterval(interval);
+          el.textContent = target.toLocaleString();
+        }
+      }, 50);
+    });
+  });
 }
