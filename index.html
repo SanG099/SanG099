@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sangam Subedi — Data Analyst Portfolio</title>
+  <meta name="description" content="Data Analyst portfolio — turning raw data into business decisions with Python, SQL, Tableau, Power BI, and R." />
+  <meta property="og:title" content="Sangam Subedi — Data Analyst Portfolio" />
+  <meta property="og:description" content="Turning raw data into business decisions. Explore projects, case studies, and interactive dashboards." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Devicons for tech stack -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+
+  <!-- Lucide Icons (SVG sprite — loaded via JS) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ============================================ -->
+  <!-- BACKGROUND CANVAS (scatter-plot / nodes)     -->
+  <!-- ============================================ -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- ============================================ -->
+  <!-- NAVIGATION                                   -->
+  <!-- ============================================ -->
+  <header id="navbar">
+    <nav class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>Sangam<span class="logo-dot">.</span>Subedi<span class="logo-bracket"> /&gt;</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#tech-stack" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#case-study" class="nav-link">Case Study</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link nav-link--cta">Let's Talk</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================ -->
+  <!-- HERO SECTION                                 -->
+  <!-- ============================================ -->
+  <section id="hero" class="section hero">
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <p class="hero-tag">📊 Data Analyst &bull; Problem Solver &bull; Storyteller</p>
+        <h1 class="hero-title">
+          Turning <span class="text-gradient">Raw Data</span><br />
+          into Business Decisions
+        </h1>
+        <p class="hero-motto">Insight <span class="text-gradient">&gt;</span> Instinct</p>
+        <p class="hero-description">
+          I don't just crunch numbers — I find the <strong>"so what?"</strong> hidden in your data.
+          From automating reports that save teams 10+ hours a week to building predictive models
+          that cut customer churn by 18%, I translate messy datasets into clear, actionable strategies.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <i data-lucide="folder-open" class="btn-icon"></i>
+            View Projects
+          </a>
+          <a href="assets/resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">
+            <i data-lucide="download" class="btn-icon"></i>
+            Download CV
+          </a>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Years Exp.</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="500">0</span><span class="stat-suffix">K</span>
+            <span class="stat-label">Rows Analyzed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal reveal--delay-1">
+        <div class="hero-graphic">
+          <!-- Profile image -->
+          <div class="hero-profile-img">
+            <img src="assets/mypicture-removebg.png" alt="Sangam Subedi" />
+          </div>
+          <!-- Animated floating data cards -->
+          <div class="float-card float-card--1">
+            <div class="float-card-icon" style="color: var(--mint)">↗ 24%</div>
+            <div class="float-card-text">Revenue Growth</div>
+          </div>
+          <div class="float-card float-card--2">
+            <div class="float-card-icon" style="color: var(--blue)">⬇ 18%</div>
+            <div class="float-card-text">Churn Reduced</div>
+          </div>
+          <div class="float-card float-card--3">
+            <div class="float-card-icon" style="color: var(--purple)">⏱ 10h</div>
+            <div class="float-card-text">Saved / Week</div>
+          </div>
+          <div class="hero-ring hero-ring--outer"></div>
+          <div class="hero-ring hero-ring--inner"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- TECH STACK SECTION                           -->
+  <!-- ============================================ -->
+  <section id="tech-stack" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">Tools & Technologies</p>
+        <h2 class="section-title">My Tech Stack</h2>
+        <p class="section-subtitle">The tools I use daily to extract insights, build models, and deliver dashboards.</p>
+      </div>
+
+      <div class="tech-grid reveal">
+        <!-- Python -->
+        <div class="tech-card" data-skill="Python">
+          <div class="tech-card-glow"></div>
+          <div class="tech-icon">
+            <i class="devicon-python-plain"></i>
+          </div>
+          <h3 class="tech-name">Python</h3>
+          <p class="tech-desc">Pandas, NumPy, Scikit-learn, Matplotlib — automating pipelines & building ML models.</p>
+          <div class="tech-bar">
+            <div class="tech-bar-fill" data-width="92"></div>
+          </div>
+        </div>
+
+        <!-- SQL -->
+        <div class="tech-card" data-skill="SQL">
+          <div class="tech-card-glow"></div>
+          <div class="tech-icon">
+            <i class="devicon-azuresqldatabase-plain"></i>
+          </div>
+          <h3 class="tech-name">SQL</h3>
+          <p class="tech-desc">Complex queries, CTEs, window functions, stored procedures — PostgreSQL & MySQL.</p>
+          <div class="tech-bar">
+            <div class="tech-bar-fill" data-width="95"></div>
+          </div>
+        </div>
+
+        <!-- Tableau -->
+        <div class="tech-card" data-skill="Tableau">
+          <div class="tech-card-glow"></div>
+          <div class="tech-icon">
+            <svg viewBox="0 0 48 48" width="48" height="48" fill="currentColor">
+              <path d="M23 0h2v8h-2zM23 40h2v8h-2zM0 23v2h8v-2zM40 23v2h8v-2zM10.3 5.7l1.4 1.4-5.6 5.6-1.4-1.4zM42 35.3l1.4 1.4-5.6 5.6-1.4-1.4zM5.7 37.7l1.4-1.4 5.6 5.6-1.4 1.4zM35.3 6l1.4-1.4 5.6 5.6-1.4 1.4zM22 12h4v10h10v4H26v10h-4V26H12v-4h10z"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">Tableau</h3>
+          <p class="tech-desc">Interactive dashboards, calculated fields, LOD expressions — published & embedded.</p>
+          <div class="tech-bar">
+            <div class="tech-bar-fill" data-width="88"></div>
+          </div>
+        </div>
+
+        <!-- Power BI -->
+        <div class="tech-card" data-skill="Power BI">
+          <div class="tech-card-glow"></div>
+          <div class="tech-icon">
+            <svg viewBox="0 0 48 48" width="48" height="48" fill="currentColor">
+              <rect x="30" y="8" width="8" height="32" rx="2"/>
+              <rect x="19" y="16" width="8" height="24" rx="2" opacity="0.8"/>
+              <rect x="8" y="24" width="8" height="16" rx="2" opacity="0.6"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">Power BI</h3>
+          <p class="tech-desc">DAX measures, Power Query, data modeling — enterprise-grade reports & KPI tracking.</p>
+          <div class="tech-bar">
+            <div class="tech-bar-fill" data-width="85"></div>
+          </div>
+        </div>
+
+        <!-- R -->
+        <div class="tech-card" data-skill="R">
+          <div class="tech-card-glow"></div>
+          <div class="tech-icon">
+            <i class="devicon-r-plain"></i>
+          </div>
+          <h3 class="tech-name">R</h3>
+          <p class="tech-desc">ggplot2, dplyr, tidyr, Shiny — statistical analysis & publication-quality visuals.</p>
+          <div class="tech-bar">
+            <div class="tech-bar-fill" data-width="78"></div>
+          </div>
+        </div>
+
+        <!-- Excel / Sheets -->
+        <div class="tech-card" data-skill="Excel">
+          <div class="tech-card-glow"></div>
+          <div class="tech-icon">
+            <svg viewBox="0 0 48 48" width="48" height="48" fill="currentColor">
+              <rect x="6" y="6" width="36" height="36" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M15 16l8 8-8 8M25 16l8 8-8 8" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">Excel</h3>
+          <p class="tech-desc">Advanced formulas, pivot tables, VBA macros — the Swiss Army knife of data.</p>
+          <div class="tech-bar">
+            <div class="tech-bar-fill" data-width="90"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- PROJECTS GALLERY                             -->
+  <!-- ============================================ -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">Featured Work</p>
+        <h2 class="section-title">Projects Gallery</h2>
+        <p class="section-subtitle">Each project is designed to deliver measurable business impact — not just pretty charts.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="project-filters reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="sql">SQL</button>
+        <button class="filter-btn" data-filter="tableau">Tableau</button>
+        <button class="filter-btn" data-filter="powerbi">Power BI</button>
+      </div>
+
+      <div class="projects-grid reveal">
+        <!-- Project Card 1 -->
+        <article class="project-card" data-category="python">
+          <div class="project-image">
+            <div class="project-image-placeholder">
+              <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="240" fill="#0f1729"/>
+                <polyline points="20,200 80,140 140,170 200,90 260,120 320,60 380,80" fill="none" stroke="#00e5a0" stroke-width="3"/>
+                <circle cx="80" cy="140" r="4" fill="#00e5a0"/>
+                <circle cx="140" cy="170" r="4" fill="#00e5a0"/>
+                <circle cx="200" cy="90" r="4" fill="#00e5a0"/>
+                <circle cx="260" cy="120" r="4" fill="#00e5a0"/>
+                <circle cx="320" cy="60" r="4" fill="#00e5a0"/>
+                <text x="200" y="230" text-anchor="middle" fill="#4a5568" font-size="11" font-family="Inter">Churn Prediction Model</text>
+              </svg>
+            </div>
+            <div class="project-overlay">
+              <span class="project-badge">Python</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Customer Churn Prediction</h3>
+            <p class="project-impact">
+              Built a Random Forest model that predicted at-risk customers with 91% accuracy.
+              <strong>Reduced monthly churn by 18%</strong>, saving an estimated $240K annually.
+            </p>
+            <div class="project-tech-tags">
+              <span>Python</span><span>Scikit-learn</span><span>Pandas</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm btn-outline">
+                <i data-lucide="github" class="btn-icon"></i> GitHub
+              </a>
+              <a href="#" class="btn btn-sm btn-primary">
+                <i data-lucide="external-link" class="btn-icon"></i> Live Dashboard
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 2 -->
+        <article class="project-card" data-category="tableau">
+          <div class="project-image">
+            <div class="project-image-placeholder">
+              <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="240" fill="#0f1729"/>
+                <rect x="40" y="60" width="40" height="150" rx="4" fill="#3b82f6" opacity="0.7"/>
+                <rect x="100" y="100" width="40" height="110" rx="4" fill="#3b82f6" opacity="0.85"/>
+                <rect x="160" y="40" width="40" height="170" rx="4" fill="#00e5a0"/>
+                <rect x="220" y="80" width="40" height="130" rx="4" fill="#3b82f6" opacity="0.85"/>
+                <rect x="280" y="120" width="40" height="90" rx="4" fill="#3b82f6" opacity="0.7"/>
+                <rect x="340" y="70" width="40" height="140" rx="4" fill="#3b82f6" opacity="0.8"/>
+                <text x="200" y="230" text-anchor="middle" fill="#4a5568" font-size="11" font-family="Inter">Sales Performance Dashboard</text>
+              </svg>
+            </div>
+            <div class="project-overlay">
+              <span class="project-badge">Tableau</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Sales Performance Dashboard</h3>
+            <p class="project-impact">
+              Designed an interactive Tableau dashboard tracking $12M in quarterly revenue across 8 regions.
+              <strong>Identified a $1.2M untapped segment</strong> that leadership fast-tracked into Q3 strategy.
+            </p>
+            <div class="project-tech-tags">
+              <span>Tableau</span><span>SQL</span><span>Excel</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm btn-outline">
+                <i data-lucide="github" class="btn-icon"></i> GitHub
+              </a>
+              <a href="#" class="btn btn-sm btn-primary">
+                <i data-lucide="external-link" class="btn-icon"></i> Live Dashboard
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 3 -->
+        <article class="project-card" data-category="sql">
+          <div class="project-image">
+            <div class="project-image-placeholder">
+              <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="240" fill="#0f1729"/>
+                <ellipse cx="200" cy="120" rx="150" ry="80" fill="none" stroke="#3b82f6" stroke-width="1" opacity="0.3"/>
+                <ellipse cx="160" cy="110" rx="80" ry="60" fill="none" stroke="#00e5a0" stroke-width="2"/>
+                <ellipse cx="240" cy="110" rx="80" ry="60" fill="none" stroke="#a78bfa" stroke-width="2"/>
+                <text x="150" y="115" text-anchor="middle" fill="#00e5a0" font-size="12" font-family="Inter">ETL</text>
+                <text x="250" y="115" text-anchor="middle" fill="#a78bfa" font-size="12" font-family="Inter">BI</text>
+                <text x="200" y="230" text-anchor="middle" fill="#4a5568" font-size="11" font-family="Inter">Automated Reporting Pipeline</text>
+              </svg>
+            </div>
+            <div class="project-overlay">
+              <span class="project-badge">SQL</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Automated Reporting Pipeline</h3>
+            <p class="project-impact">
+              Engineered an end-to-end ETL pipeline that replaced 6 manual Excel reports with automated SQL jobs.
+              <strong>Saved the analytics team 10+ hours per week</strong> and eliminated data entry errors.
+            </p>
+            <div class="project-tech-tags">
+              <span>SQL</span><span>Python</span><span>Airflow</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm btn-outline">
+                <i data-lucide="github" class="btn-icon"></i> GitHub
+              </a>
+              <a href="#" class="btn btn-sm btn-primary">
+                <i data-lucide="external-link" class="btn-icon"></i> Live Dashboard
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 4 -->
+        <article class="project-card" data-category="powerbi">
+          <div class="project-image">
+            <div class="project-image-placeholder">
+              <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="240" fill="#0f1729"/>
+                <circle cx="200" cy="110" r="70" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                <path d="M200 40 A70 70 0 0 1 258 145" fill="#00e5a0" opacity="0.6"/>
+                <path d="M258 145 A70 70 0 0 1 150 155" fill="#a78bfa" opacity="0.6"/>
+                <path d="M150 155 A70 70 0 0 1 200 40" fill="#3b82f6" opacity="0.6"/>
+                <text x="200" y="115" text-anchor="middle" fill="#e2e8f0" font-size="14" font-family="Inter" font-weight="bold">KPIs</text>
+                <text x="200" y="230" text-anchor="middle" fill="#4a5568" font-size="11" font-family="Inter">HR Analytics Dashboard</text>
+              </svg>
+            </div>
+            <div class="project-overlay">
+              <span class="project-badge">Power BI</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">HR Analytics Dashboard</h3>
+            <p class="project-impact">
+              Built a Power BI dashboard tracking employee attrition, satisfaction, and performance across 1,200 staff.
+              <strong>Pinpointed 3 high-risk departments</strong>, leading to targeted retention programs.
+            </p>
+            <div class="project-tech-tags">
+              <span>Power BI</span><span>DAX</span><span>SQL</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm btn-outline">
+                <i data-lucide="github" class="btn-icon"></i> GitHub
+              </a>
+              <a href="#" class="btn btn-sm btn-primary">
+                <i data-lucide="external-link" class="btn-icon"></i> Live Dashboard
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 5 -->
+        <article class="project-card" data-category="python">
+          <div class="project-image">
+            <div class="project-image-placeholder">
+              <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="240" fill="#0f1729"/>
+                <g opacity="0.8">
+                  <rect x="30" y="50" width="100" height="16" rx="3" fill="#1e293b"/>
+                  <rect x="30" y="50" width="72" height="16" rx="3" fill="#00e5a0" opacity="0.6"/>
+                  <rect x="30" y="76" width="100" height="16" rx="3" fill="#1e293b"/>
+                  <rect x="30" y="76" width="88" height="16" rx="3" fill="#3b82f6" opacity="0.6"/>
+                  <rect x="30" y="102" width="100" height="16" rx="3" fill="#1e293b"/>
+                  <rect x="30" y="102" width="55" height="16" rx="3" fill="#a78bfa" opacity="0.6"/>
+                  <rect x="30" y="128" width="100" height="16" rx="3" fill="#1e293b"/>
+                  <rect x="30" y="128" width="95" height="16" rx="3" fill="#00e5a0" opacity="0.6"/>
+                </g>
+                <g transform="translate(180,30)">
+                  <rect width="190" height="170" rx="8" fill="#1e293b" opacity="0.5"/>
+                  <text x="95" y="90" text-anchor="middle" fill="#64748b" font-size="28" font-family="Inter">📊</text>
+                </g>
+                <text x="200" y="230" text-anchor="middle" fill="#4a5568" font-size="11" font-family="Inter">A/B Test Analysis Engine</text>
+              </svg>
+            </div>
+            <div class="project-overlay">
+              <span class="project-badge">Python</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">A/B Test Analysis Engine</h3>
+            <p class="project-impact">
+              Created a reusable Python framework for running and evaluating A/B tests with Bayesian statistics.
+              <strong>Accelerated experiment analysis from 3 days to 15 minutes</strong> across the product team.
+            </p>
+            <div class="project-tech-tags">
+              <span>Python</span><span>SciPy</span><span>Streamlit</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm btn-outline">
+                <i data-lucide="github" class="btn-icon"></i> GitHub
+              </a>
+              <a href="#" class="btn btn-sm btn-primary">
+                <i data-lucide="external-link" class="btn-icon"></i> Live Dashboard
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 6 -->
+        <article class="project-card" data-category="tableau">
+          <div class="project-image">
+            <div class="project-image-placeholder">
+              <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="240" fill="#0f1729"/>
+                <g transform="translate(50,30)">
+                  <rect width="300" height="20" rx="4" fill="#1e293b"/>
+                  <rect width="220" height="20" rx="4" fill="#3b82f6" opacity="0.5"/>
+                </g>
+                <g transform="translate(50,60)">
+                  <rect width="300" height="20" rx="4" fill="#1e293b"/>
+                  <rect width="280" height="20" rx="4" fill="#00e5a0" opacity="0.5"/>
+                </g>
+                <g transform="translate(50,90)">
+                  <rect width="300" height="20" rx="4" fill="#1e293b"/>
+                  <rect width="150" height="20" rx="4" fill="#a78bfa" opacity="0.5"/>
+                </g>
+                <g transform="translate(50,120)">
+                  <rect width="300" height="20" rx="4" fill="#1e293b"/>
+                  <rect width="260" height="20" rx="4" fill="#3b82f6" opacity="0.5"/>
+                </g>
+                <g transform="translate(50,150)">
+                  <rect width="300" height="20" rx="4" fill="#1e293b"/>
+                  <rect width="190" height="20" rx="4" fill="#00e5a0" opacity="0.5"/>
+                </g>
+                <text x="200" y="230" text-anchor="middle" fill="#4a5568" font-size="11" font-family="Inter">Supply Chain Optimization</text>
+              </svg>
+            </div>
+            <div class="project-overlay">
+              <span class="project-badge">Tableau</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Supply Chain Optimization</h3>
+            <p class="project-impact">
+              Visualized logistics data for 50K+ shipments to identify bottlenecks in the delivery pipeline.
+              <strong>Recommendations reduced average delivery time by 22%</strong> and cut shipping costs by $180K.
+            </p>
+            <div class="project-tech-tags">
+              <span>Tableau</span><span>Python</span><span>SQL</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm btn-outline">
+                <i data-lucide="github" class="btn-icon"></i> GitHub
+              </a>
+              <a href="#" class="btn btn-sm btn-primary">
+                <i data-lucide="external-link" class="btn-icon"></i> Live Dashboard
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- CASE STUDY SECTION                           -->
+  <!-- ============================================ -->
+  <section id="case-study" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">Deep Dive</p>
+        <h2 class="section-title">Case Study</h2>
+        <p class="section-subtitle">A structured walkthrough of my analytical process — from business question to actionable insight.</p>
+      </div>
+
+      <div class="case-study-wrapper reveal">
+        <div class="case-study-hero">
+          <span class="case-study-badge">Featured Case Study</span>
+          <h3 class="case-study-title">Reducing E-Commerce Customer Churn by 18%</h3>
+          <p class="case-study-meta">
+            <span><i data-lucide="calendar" class="icon-sm"></i> Jan 2026</span>
+            <span><i data-lucide="clock" class="icon-sm"></i> 4-week project</span>
+            <span><i data-lucide="database" class="icon-sm"></i> 85,000 records</span>
+          </p>
+        </div>
+
+        <div class="case-study-timeline">
+          <!-- Step 1: Problem -->
+          <div class="timeline-step">
+            <div class="timeline-icon">
+              <i data-lucide="help-circle"></i>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-label">01 — The Problem</span>
+              <h4>Customer churn spiked 30% quarter-over-quarter</h4>
+              <p>
+                The e-commerce platform saw a sudden rise in customer cancellations. The business team suspected
+                pricing changes, but had no data-backed evidence. Leadership needed to understand
+                <em>why</em> customers were leaving and <em>which</em> customers were most at risk — within 4 weeks.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2: Data Cleaning -->
+          <div class="timeline-step">
+            <div class="timeline-icon">
+              <i data-lucide="filter"></i>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-label">02 — Data Cleaning</span>
+              <h4>85K records across 4 disparate sources</h4>
+              <p>
+                Merged transaction logs, CRM records, support tickets, and web analytics data.
+                Handled 12% missing values via imputation, removed duplicates, standardized date
+                formats, and engineered 15 new features (e.g., days since last purchase, support
+                ticket frequency, session depth trend).
+              </p>
+              <div class="timeline-code">
+                <code>
+                  <span class="code-comment"># Feature engineering example</span><br>
+                  df['days_since_purchase'] = (pd.Timestamp.now() - df['last_order']).dt.days<br>
+                  df['support_frequency'] = df.groupby('user_id')['ticket_id'].transform('count')
+                </code>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Analysis -->
+          <div class="timeline-step">
+            <div class="timeline-icon">
+              <i data-lucide="line-chart"></i>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-label">03 — Analysis</span>
+              <h4>Random Forest + SHAP for interpretability</h4>
+              <p>
+                Trained a Random Forest classifier (91% accuracy, 0.88 F1 score) to predict churn probability.
+                Used SHAP values to identify the top 5 drivers: <strong>days since last purchase</strong>,
+                <strong>support ticket frequency</strong>, <strong>discount dependency</strong>,
+                <strong>session depth decline</strong>, and <strong>payment failure rate</strong>.
+                Validated results with 5-fold cross-validation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4: Insight -->
+          <div class="timeline-step">
+            <div class="timeline-icon">
+              <i data-lucide="lightbulb"></i>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-label">04 — Insight & Impact</span>
+              <h4>$240K saved annually through targeted retention</h4>
+              <p>
+                Delivered a risk-scored customer segment to the marketing team. High-risk customers
+                (top 20%) received personalized re-engagement campaigns. Results after 3 months:
+              </p>
+              <div class="insight-metrics">
+                <div class="insight-metric">
+                  <span class="insight-value">↓ 18%</span>
+                  <span class="insight-label">Churn Rate</span>
+                </div>
+                <div class="insight-metric">
+                  <span class="insight-value">$240K</span>
+                  <span class="insight-label">Annual Savings</span>
+                </div>
+                <div class="insight-metric">
+                  <span class="insight-value">91%</span>
+                  <span class="insight-label">Model Accuracy</span>
+                </div>
+                <div class="insight-metric">
+                  <span class="insight-value">3.2×</span>
+                  <span class="insight-label">ROI on Campaign</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Embedded Dashboard Placeholder -->
+        <div class="case-study-embed">
+          <div class="embed-placeholder">
+            <i data-lucide="monitor" style="width:48px;height:48px;opacity:0.5"></i>
+            <p>Interactive Tableau Dashboard</p>
+            <span>Replace this with your embedded Tableau/Power BI iframe</span>
+            <!-- Example embed:
+            <iframe src="https://public.tableau.com/views/YourDashboard" width="100%" height="500" frameborder="0"></iframe>
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ABOUT SECTION                                -->
+  <!-- ============================================ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid reveal">
+        <div class="about-image">
+          <img src="assets/mypicture-removebg.png" alt="Sangam Subedi — Data Analyst" class="about-photo" />
+          <div class="about-image-decoration"></div>
+        </div>
+        <div class="about-content">
+          <p class="section-tag">The Human Behind the Data</p>
+          <h2 class="section-title">About Me</h2>
+          <p class="about-text">
+            I'm a data analyst who believes every dataset has a story — and my job is to find the chapter that
+            changes the business. With 3+ years of experience turning ambiguous questions into clear, data-driven
+            answers, I specialize in customer analytics, operational efficiency, and predictive modeling.
+          </p>
+          <p class="about-text">
+            My approach is simple: <strong>start with "why does this matter?"</strong> before writing a single line of code.
+            This ensures every analysis delivers impact, not just charts.
+          </p>
+          <p class="about-text about-human">
+            When I'm not wrangling data, you'll find me playing chess ♟️, experimenting with film photography 📷,
+            or trying to perfect my homemade ramen recipe 🍜. I believe curiosity drives great analysis —
+            whether it's understanding customer behavior or figuring out the perfect broth-to-noodle ratio.
+          </p>
+          <div class="about-cta">
+            <a href="#contact" class="btn btn-primary">
+              <i data-lucide="mail" class="btn-icon"></i>
+              Get In Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- CONTACT / FOOTER                             -->
+  <!-- ============================================ -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-content reveal">
+        <div class="footer-main">
+          <h2 class="footer-title">Let's work together.</h2>
+          <p class="footer-subtitle">Have a dataset that needs a story? I'd love to hear about it.</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="mailto:subedisangam183@gmail.com" class="footer-link">
+            <i data-lucide="mail"></i>
+            <span>subedisangam183@gmail.com</span>
+          </a>
+          <a href="tel:+9779864434019" class="footer-link">
+            <i data-lucide="phone"></i>
+            <span>+977 9864434019</span>
+          </a>
+          <a href="https://linkedin.com/in/sangamsubedi" target="_blank" rel="noopener" class="footer-link">
+            <i data-lucide="linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/sangamsubedi" target="_blank" rel="noopener" class="footer-link">
+            <i data-lucide="github"></i>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sangam Subedi. Built with ☕ and curiosity.</p>
+        <p class="footer-credit">Designed & developed from scratch</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
