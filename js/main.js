@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initMagneticButtons();
   initParallaxFloat();
   initSectionCountReveal();
+  initDataScramble();
+  initDataTicker();
+  initSectionTitleDecode();
+  initFloatCardDataStream();
 });
 
 
@@ -686,5 +690,254 @@ function initSectionCountReveal() {
         }
       }, 50);
     });
+  });
+}
+
+
+/* =============================================
+   16. DATA SCRAMBLE — Matrix-style text decode
+   ============================================= */
+function initDataScramble() {
+  const dataChars = '█▓▒░01{}[]<>|/\\#$%&@!?+=-_.,:;~^*αβγδΣΔΩπ∞∑∏√∫≈≠≤≥';
+  const scrambles = document.querySelectorAll('.data-scramble');
+  if (!scrambles.length) return;
+
+  scrambles.forEach(el => {
+    const finalText = el.getAttribute('data-final') || el.textContent;
+    el.textContent = '';
+    el.setAttribute('data-final', finalText);
+
+    // Create character spans
+    const chars = [];
+    for (let i = 0; i < finalText.length; i++) {
+      const span = document.createElement('span');
+      span.className = 'char scrambling';
+      span.textContent = dataChars[Math.floor(Math.random() * dataChars.length)];
+      span.dataset.final = finalText[i];
+      span.dataset.index = i;
+      el.appendChild(span);
+      chars.push(span);
+    }
+
+    // Add blinking cursor at the end
+    const cursor = document.createElement('span');
+    cursor.className = 'data-cursor';
+    el.appendChild(cursor);
+
+    // Scramble animation — characters resolve left-to-right
+    let resolved = 0;
+    const totalDuration = 1800; // ms total for full text
+    const perCharDelay = totalDuration / finalText.length;
+
+    function scrambleLoop() {
+      // Rapidly cycle unresolved characters
+      chars.forEach((span, i) => {
+        if (i >= resolved) {
+          span.textContent = dataChars[Math.floor(Math.random() * dataChars.length)];
+        }
+      });
+
+      if (resolved < chars.length) {
+        requestAnimationFrame(scrambleLoop);
+      }
+    }
+
+    // Start after page loads
+    setTimeout(() => {
+      scrambleLoop();
+
+      // Resolve characters one by one
+      chars.forEach((span, i) => {
+        setTimeout(() => {
+          span.textContent = span.dataset.final;
+          span.classList.remove('scrambling');
+          span.classList.add('resolved');
+          resolved++;
+        }, 400 + i * perCharDelay);
+      });
+
+      // Remove cursor after all resolved
+      setTimeout(() => {
+        cursor.style.transition = 'opacity 0.5s';
+        cursor.style.opacity = '0';
+        setTimeout(() => cursor.remove(), 500);
+      }, 400 + chars.length * perCharDelay + 500);
+    }, 800);
+  });
+}
+
+
+/* =============================================
+   17. DATA TICKER — Live data stream
+   ============================================= */
+function initDataTicker() {
+  const ticker = document.getElementById('dataTicker');
+  if (!ticker) return;
+
+  const dataPoints = [
+    { label: 'REVENUE',    value: '+24.3%',   cls: 'tick-value' },
+    { label: 'CHURN',      value: '-18.2%',   cls: 'tick-down' },
+    { label: 'ACCURACY',   value: '91.4%',    cls: 'tick-value' },
+    { label: 'ROWS',       value: '500,247',  cls: 'tick-neutral' },
+    { label: 'F1_SCORE',   value: '0.884',    cls: 'tick-value' },
+    { label: 'P_VALUE',    value: '0.003',    cls: 'tick-value' },
+    { label: 'ROI',        value: '3.2×',     cls: 'tick-value' },
+    { label: 'TIME_SAVED', value: '-42%',     cls: 'tick-down' },
+    { label: 'FEATURES',   value: '15',       cls: 'tick-neutral' },
+    { label: 'CUSTOMERS',  value: '12,847',   cls: 'tick-neutral' },
+    { label: 'SEGMENTS',   value: '8',        cls: 'tick-neutral' },
+    { label: 'R²',         value: '0.923',    cls: 'tick-value' },
+  ];
+
+  // Create two copies for seamless loop
+  let html = '';
+  for (let copy = 0; copy < 3; copy++) {
+    dataPoints.forEach(dp => {
+      html += `<span class="tick-item">${dp.label}: <span class="${dp.cls}">${dp.value}</span></span>`;
+    });
+  }
+
+  ticker.innerHTML = html;
+
+  // Animate — shift left continuously
+  let position = 0;
+  const speed = 0.5;
+
+  function scrollTicker() {
+    position -= speed;
+    const totalWidth = ticker.scrollWidth / 3;
+    if (Math.abs(position) >= totalWidth) {
+      position = 0;
+    }
+    ticker.style.transform = `translateX(${position}px)`;
+    requestAnimationFrame(scrollTicker);
+  }
+
+  scrollTicker();
+
+  // Randomly update a value every 3s to simulate live data
+  setInterval(() => {
+    const allValues = ticker.querySelectorAll('.tick-value, .tick-down');
+    if (!allValues.length) return;
+    const randomEl = allValues[Math.floor(Math.random() * allValues.length)];
+
+    // Flash effect
+    randomEl.style.transition = 'none';
+    randomEl.style.textShadow = '0 0 10px currentColor';
+    randomEl.style.transform = 'scale(1.1)';
+
+    // Parse and slightly change value
+    const original = randomEl.textContent;
+    const numMatch = original.match(/[\\d.]+/);
+    if (numMatch) {
+      const num = parseFloat(numMatch[0]);
+      const delta = (Math.random() - 0.5) * num * 0.05;
+      const newNum = (num + delta).toFixed(original.includes('.') ? original.split('.')[1]?.replace(/[^\\d]/g, '').length || 1 : 0);
+      randomEl.textContent = original.replace(numMatch[0], newNum);
+    }
+
+    setTimeout(() => {
+      randomEl.style.transition = 'all 0.5s';
+      randomEl.style.textShadow = '';
+      randomEl.style.transform = '';
+    }, 300);
+  }, 3000);
+}
+
+
+/* =============================================
+   18. SECTION TITLE DECODE — Data viz reveal
+   ============================================= */
+function initSectionTitleDecode() {
+  const dataChars = '0123456789#$%&@!?█▓▒░{}[]<>';
+  const sectionTitles = document.querySelectorAll('.section-title');
+  if (!sectionTitles.length) return;
+
+  sectionTitles.forEach(title => {
+    // Skip hero title
+    if (title.closest('.hero-content')) return;
+
+    const originalText = title.textContent;
+    title.textContent = '';
+
+    // Wrap each character
+    for (let i = 0; i < originalText.length; i++) {
+      const span = document.createElement('span');
+      span.className = 'char-reveal';
+      span.textContent = originalText[i];
+      span.dataset.final = originalText[i];
+      span.dataset.index = i;
+      title.appendChild(span);
+    }
+  });
+
+  // Observe each section title
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const chars = entry.target.querySelectorAll('.char-reveal');
+
+          chars.forEach((span, i) => {
+            const delay = i * 30;
+
+            // Phase 1: Show with random data character
+            setTimeout(() => {
+              span.classList.add('visible', 'decoding');
+              span.textContent = span.dataset.final === ' ' ? ' ' : dataChars[Math.floor(Math.random() * dataChars.length)];
+            }, delay);
+
+            // Phase 2: Scramble 2-3 times
+            setTimeout(() => {
+              if (span.dataset.final !== ' ') {
+                span.textContent = dataChars[Math.floor(Math.random() * dataChars.length)];
+              }
+            }, delay + 60);
+
+            // Phase 3: Resolve to final character
+            setTimeout(() => {
+              span.textContent = span.dataset.final;
+              span.classList.remove('decoding');
+            }, delay + 120);
+          });
+
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  sectionTitles.forEach(title => {
+    if (!title.closest('.hero-content')) {
+      observer.observe(title);
+    }
+  });
+}
+
+
+/* =============================================
+   19. FLOAT CARD DATA STREAM — Randomize readouts
+   ============================================= */
+function initFloatCardDataStream() {
+  const readouts = document.querySelectorAll('.data-readout');
+  if (!readouts.length) return;
+
+  const streamChars = '█▓▒░▁▂▃▄▅▆▇◆◇●○■□▪▫';
+
+  readouts.forEach(readout => {
+    const base = readout.textContent;
+
+    setInterval(() => {
+      let newText = '';
+      for (let i = 0; i < base.length; i++) {
+        if (base[i] === ' ' || Math.random() < 0.6) {
+          newText += base[i];
+        } else {
+          newText += streamChars[Math.floor(Math.random() * streamChars.length)];
+        }
+      }
+      readout.textContent = newText;
+    }, 150);
   });
 }

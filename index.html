@@ -66,11 +66,22 @@
     <div class="container hero-grid">
       <div class="hero-content reveal">
         <p class="hero-tag">📊 Data Analyst &bull; Problem Solver &bull; Storyteller</p>
-        <h1 class="hero-title">
-          Turning <span class="text-gradient">Raw Data</span><br />
-          into Business Decisions
+        <h1 class="hero-title" data-text="Turning Raw Data into Business Decisions">
+          <span class="hero-title-line">
+            Turning <span class="text-gradient data-scramble" data-final="Raw Data">Raw Data</span>
+          </span><br />
+          <span class="hero-title-line">
+            into <span class="data-scramble" data-final="Business Decisions">Business Decisions</span>
+          </span>
         </h1>
         <p class="hero-motto">Insight <span class="text-gradient">&gt;</span> Instinct</p>
+
+        <!-- Data stream ticker -->
+        <div class="data-ticker">
+          <span class="data-ticker-label">LIVE</span>
+          <div class="data-ticker-stream" id="dataTicker"></div>
+        </div>
+
         <p class="hero-description">
           I don't just crunch numbers — I find the <strong>"so what?"</strong> hidden in your data.
           From automating reports that save teams 10+ hours a week to building predictive models
@@ -114,14 +125,17 @@
           <div class="float-card float-card--1">
             <div class="float-card-icon" style="color: var(--mint)">↗ 24%</div>
             <div class="float-card-text">Revenue Growth</div>
+            <span class="data-readout">██▓▒░ 0.94 → 1.24 ██▓▒░</span>
           </div>
           <div class="float-card float-card--2">
             <div class="float-card-icon" style="color: var(--blue)">⬇ 18%</div>
             <div class="float-card-text">Churn Reduced</div>
+            <span class="data-readout">▁▂▃▅▆▇ p=0.003 ▇▆▅▃▂▁</span>
           </div>
           <div class="float-card float-card--3">
             <div class="float-card-icon" style="color: var(--purple)">⏱ 10h</div>
             <div class="float-card-text">Saved / Week</div>
+            <span class="data-readout">◆◇◆ Δt=-42% eff+67% ◆◇◆</span>
           </div>
           <div class="hero-ring hero-ring--outer"></div>
           <div class="hero-ring hero-ring--inner"></div>
