@@ -4,7 +4,7 @@
 
 > *Insight > Instinct* — I turn raw data into business decisions.
 
-[![Portfolio](https://img.shields.io/badge/🌐_Portfolio-Live_Site-00e5a0?style=for-the-badge)](https://sang099.github.io/Portfolio/)
+[![Portfolio](https://img.shields.io/badge/🌐_Portfolio-Live_Site-00e5a0?style=for-the-badge)](http://sangamsubedi.me)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/sangam-subedi-142580268)
 [![Email](https://img.shields.io/badge/Email-Contact_Me-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:subedisangam183@gmail.com)
 
@@ -95,7 +95,7 @@ I'm always open to collaborating on interesting data problems or discussing new 
 - 📱 **Phone:** +977 9864434019
 - 💼 **LinkedIn:** [linkedin.com/in/sangam-subedi-142580268](https://linkedin.com/in/sangam-subedi-142580268)
 - 🐙 **GitHub:** [github.com/SanG099](https://github.com/SanG099)
-- 🌐 **Portfolio:** [sang099.github.io/Portfolio](https://sang099.github.io/Portfolio/)
+- 🌐 **Portfolio:** [sangamsubedi.me](http://sangamsubedi.me)
 
 ---
 
