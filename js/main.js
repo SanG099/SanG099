@@ -246,13 +246,13 @@ function initBackgroundCanvas() {
   const CONNECTION_DIST = 140;
   const MOUSE_RADIUS = 200;
 
-  // Star colors — mix of white, mint, blue, and purple tints
+  // Star colors — mix of white, green, red, and warm tints
   const starColors = [
     { r: 255, g: 255, b: 255 },   // white
-    { r: 0,   g: 229, b: 160 },   // mint
-    { r: 59,  g: 130, b: 246 },   // blue
-    { r: 167, g: 139, b: 250 },   // purple
-    { r: 200, g: 220, b: 255 },   // ice-blue
+    { r: 0,   g: 200, b: 83  },   // green
+    { r: 229, g: 57,  b: 53  },   // red
+    { r: 255, g: 111, b: 97  },   // coral
+    { r: 200, g: 230, b: 200 },   // light green
   ];
 
   function resize() {
@@ -323,7 +323,7 @@ function initBackgroundCanvas() {
         if (dist < MOUSE_RADIUS) {
           const opacity = 0.25 * (1 - dist / MOUSE_RADIUS);
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(0, 229, 160, ${opacity})`;
+          ctx.strokeStyle = `rgba(0, 200, 83, ${opacity})`;
           ctx.lineWidth = 0.6;
           ctx.moveTo(mouse.x, mouse.y);
           ctx.lineTo(s.x, s.y);

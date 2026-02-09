@@ -10,12 +10,12 @@
   --slate-light:#3a3f4e;
 
   /* Accent colors */
-  --mint:       #00e5a0;
-  --mint-dim:   rgba(0, 229, 160, 0.15);
-  --blue:       #3b82f6;
-  --blue-dim:   rgba(59, 130, 246, 0.15);
-  --purple:     #a78bfa;
-  --purple-dim: rgba(167, 139, 250, 0.15);
+  --mint:       #00c853;
+  --mint-dim:   rgba(0, 200, 83, 0.15);
+  --blue:       #e53935;
+  --blue-dim:   rgba(229, 57, 53, 0.15);
+  --purple:     #ff6f61;
+  --purple-dim: rgba(255, 111, 97, 0.15);
 
   /* Text */
   --text-primary:   #e2e8f0;
@@ -55,12 +55,12 @@
   --slate:      #cbd5e1;
   --slate-light:#94a3b8;
 
-  --mint:       #059669;
-  --mint-dim:   rgba(5, 150, 105, 0.1);
-  --blue:       #2563eb;
-  --blue-dim:   rgba(37, 99, 235, 0.1);
-  --purple:     #7c3aed;
-  --purple-dim: rgba(124, 58, 237, 0.1);
+  --mint:       #2e7d32;
+  --mint-dim:   rgba(46, 125, 50, 0.1);
+  --blue:       #c62828;
+  --blue-dim:   rgba(198, 40, 40, 0.1);
+  --purple:     #d84315;
+  --purple-dim: rgba(216, 67, 21, 0.1);
 
   --text-primary:   #0f172a;
   --text-secondary: #475569;
@@ -132,7 +132,7 @@
 [data-theme="light"] .project-badge {
   background: rgba(248, 250, 252, 0.9);
   color: var(--mint);
-  border-color: rgba(5, 150, 105, 0.3);
+  border-color: rgba(46, 125, 50, 0.3);
 }
 
 [data-theme="light"] .hamburger span {
@@ -280,7 +280,7 @@ button {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--mint), #00c08b);
+  background: linear-gradient(135deg, var(--mint), var(--blue));
   color: var(--navy);
 }
 
@@ -1006,7 +1006,7 @@ button {
 
 .case-study-hero {
   padding: 48px;
-  background: linear-gradient(135deg, rgba(0, 229, 160, 0.05), rgba(59, 130, 246, 0.05));
+  background: linear-gradient(135deg, rgba(0, 200, 83, 0.05), rgba(229, 57, 53, 0.05));
   border-bottom: 1px solid var(--glass-border);
 }
 
